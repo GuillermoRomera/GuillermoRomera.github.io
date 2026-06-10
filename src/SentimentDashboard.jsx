@@ -61,29 +61,16 @@ const NOTES = { LM: "", VX: "VX NPS collection ends Dec 2025" };
 
 // comment rows: [platform, type, date, score, account|null, text]
 const raw = [
-  ["LM","NPS","2026-03-12",10,null,"Love it. The new search finds exactly what I need on the first try."],
-  ["LM","NPS","2026-03-11",2,null,"My workspace settings reset every time the app updates. Please fix this."],
-  ["LM","NPS","2026-03-10",9,null,"Reliable, fast, and the template gallery keeps getting better."],
-  ["LM","NPS","2026-03-09",0,null,"The dashboard is cluttered and slow. Finding anything takes three clicks too many."],
-  ["LM","NPS","2026-03-07",10,null,"Switched our whole team over last quarter — no regrets."],
-  ["LM","NPS","2026-03-05",3,null,"It doesn't do anything I can't already do with free alternatives."],
-  ["LM","NPS","2026-02-27",8,null,"Solid product overall. Exports could be faster on large projects."],
-  ["LM","NPS","2026-02-20",9,null,"Support resolved my billing issue in under an hour. Impressive."],
-  ["LM","CES","2026-03-10",2,null,"Stop suggesting add-ons I didn't ask for. I'll find them myself if I need them."],
-  ["LM","CES","2026-03-06",1,null,"Assets that synced fine for months suddenly show as missing. I spent half a day re-linking everything."],
-  ["LM","CES","2026-03-04",3,null,"The smart-match feature is close, but the results could be more precise."],
-  ["LM","CES","2026-03-02",4,null,"Occasionally signs me out without warning, but otherwise smooth."],
-  ["LM","CES","2026-02-14",5,null,"Huge library, great preview tools, and the site is genuinely easy to navigate."],
-  ["VX","CES","2026-03-11",4,null,"Moving the sync button to the top bar was a big improvement over the old dropdown."],
-  ["VX","CES","2026-03-06",4,null,"Would love clearer guidance on cleaning up old libraries — mine have grown messy over the years."],
-  ["VX","CES","2026-03-03",1,null,"I miss the classic interface. The redesign buried everything I use daily."],
-  ["VX","CES","2026-02-24",1,null,"Constant bugs. Items deactivate on their own and sometimes won't re-activate at all."],
-  ["VX","CES","2026-02-12",2,null,"The previous desktop app was faster and simpler. This version feels clunky in comparison."],
-  ["VX","NPS","2025-12-08",9,"Brightline Studio","Really easy to pull in exactly the assets my team needs."],
-  ["VX","NPS","2025-12-06",1,"Cobalt & Pine Ltd","Too expensive and too clunky. Every update breaks the plugin integrations again."],
-  ["VX","NPS","2025-12-02",10,"Harbor Mill Press","Very useful. Does what it promises."],
-  ["VX","NPS","2025-11-29",2,"Atlas Print Co","The web client lags on open, logs me out constantly, and never remembers my password manager."],
-  ["VX","NPS","2025-11-28",1,"Fieldstone Creative","It keeps turning off items I've pinned as permanent. 'Permanent' should mean permanent."],
+  ["LM","NPS","2026-03-14",10,null,"Adaptive cruise control on the highway is seamless — matches traffic pace without any jerkiness."],
+  ["LM","NPS","2026-03-11",2,null,"The infotainment screen is unresponsive in cold weather. Unusable on winter mornings until the cabin warms up."],
+  ["LM","NPS","2026-03-08",9,null,"Lane-keeping assist is smooth and non-intrusive. Feels like a safety net, not a constant correction."],
+  ["LM","NPS","2026-02-22",0,null,"Parking sensors trigger false alerts every time I pull into my own garage. Completely unreliable."],
+  ["LM","CES","2026-03-10",5,null,"Setting up Android Auto took one plug-in and it has remembered my phone ever since. Couldn't be easier."],
+  ["LM","CES","2026-03-05",1,null,"Adjusting the heated seat zones requires four menu taps. Should be a single shortcut from the home screen."],
+  ["VX","NPS","2026-03-13",9,"Crestline Motors","Blind-spot monitoring caught a fast-approaching car I genuinely didn't see. Feels trustworthy on the freeway."],
+  ["VX","NPS","2026-02-20",1,"Summit Drive Group","The voice assistant mishears commands constantly and sometimes executes the wrong action entirely."],
+  ["VX","CES","2026-03-07",4,null,"Wireless phone charging works out of the box and holds the handset securely even over rough roads."],
+  ["VX","CES","2026-02-15",2,null,"The heads-up display auto-brightness is backwards — it dims in direct sunlight and blinds at night."],
 ];
 
 // ============================= DATA END =============================
@@ -276,7 +263,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "flex-end", gap: 16, flexWrap: "wrap",
           paddingBottom: 18, borderBottom: `1px solid ${C.border}` }}>
           <div>
-            <Eyebrow color={C.faint}>Voice of customer · Demo data</Eyebrow>
+            <Eyebrow color={C.faint}>Car feature reviews · Voice of customer · Demo data</Eyebrow>
             <h1 style={{ margin: "6px 0 0", fontSize: 28, fontWeight: 800, letterSpacing: "-0.01em" }}>
               Sentiment Dashboard
             </h1>
@@ -297,15 +284,15 @@ export default function App() {
         <div style={{ marginTop: 16, background: C.panel, border: `1px solid ${C.border}`,
           borderRadius: 10, padding: "11px 14px", color: C.muted, fontSize: 12.5, lineHeight: 1.55 }}>
           Each panel plots two metrics on independent axes. <strong style={{ color: C.nps }}>NPS</strong> is the
-          net promoter score (% promoters minus % detractors, −100…+100); higher is better, the dashed grey line marks zero.
-          <strong style={{ color: C.ces }}> CES</strong> is the average customer-effort score on a 1–5 scale; higher means a smoother experience.
+          net promoter score (% drivers who would recommend the feature minus % who would not, −100…+100); higher is better, the dashed grey line marks zero.
+          <strong style={{ color: C.ces }}> CES</strong> is the average customer-effort score on a 1–5 scale; higher means a more intuitive, effortless feature experience.
         </div>
 
         {/* Comments */}
         <div style={{ marginTop: 30 }}>
           <Eyebrow color={C.faint}>Verbatim comments</Eyebrow>
           <h2 style={{ margin: "6px 0 14px", fontSize: 19, fontWeight: 750 }}>
-            What customers said
+            What drivers said
             <span style={{ color: C.faint, fontWeight: 500, fontSize: 14, marginLeft: 10 }}>
               {filtered.length} shown
             </span>
@@ -353,10 +340,10 @@ export default function App() {
 
         <div style={{ marginTop: 34, paddingTop: 14, borderTop: `1px solid ${C.border}`,
           color: C.faint, fontSize: 11.5, lineHeight: 1.6 }}>
-          Sources: <span style={{ fontFamily: MONO }}>NPS Email Survey</span> ·
-          <span style={{ fontFamily: MONO }}> CES In-app Poll</span> ·
-          <span style={{ fontFamily: MONO }}> NPS Account Upload</span>.
-          All data on this page is synthetic demo data — companies, accounts, scores, and comments are fictional.
+          Sources: <span style={{ fontFamily: MONO }}>NPS Owner Survey</span> ·
+          <span style={{ fontFamily: MONO }}> CES In-vehicle Poll</span> ·
+          <span style={{ fontFamily: MONO }}> NPS Dealer Upload</span>.
+          All data on this page is synthetic demo data — vehicles, accounts, scores, and comments are fictional.
         </div>
       </div>
     </div>
