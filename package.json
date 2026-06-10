@@ -1,0 +1,19 @@
+{
+  "name": "sentiment-dashboard-demo",
+  "version": "1.0.0",
+  "description": "Demo sentiment dashboard (NPS/CES) with fully synthetic data, deployable to GitHub Pages",
+  "scripts": {
+    "build": "esbuild src/main.jsx --bundle --minify --jsx=automatic --define:process.env.NODE_ENV=\"\\\"production\\\"\" --outfile=docs/bundle.js",
+    "serve": "npx serve docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild": "^0.28.0",
+    "jsdom": "^29.1.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "recharts": "^3.8.1"
+  }
+}
